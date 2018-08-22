@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package bestan.common.protobuf;
+
+message BaseProto
+{
+	int32 messageId				= 1;
+	bytes messageData			= 2;
+	map<int32, int32> testInfo	= 3;
+}
