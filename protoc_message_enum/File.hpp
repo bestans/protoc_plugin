@@ -214,14 +214,15 @@ namespace evt {
 		/* TEXT */
 
 		template <typename Type>
-		void write(const Type& contentToWrite, bool appendContent = true) {
+		File& write(const Type& contentToWrite, bool appendContent = true) {
 
-			if (mode == Mode::binary) { incompatibleMode(); return; }
+			if (mode == Mode::binary) { incompatibleMode(); return *this; }
 
 			if (appendContent) { open(std::ios::out | std::ios::in | std::ios::app); }
 			else { open(std::ios::out | std::ios::in | std::ios::trunc); }
 
 			fileStream << contentToWrite;
+			return *this;
 		}
 
 		template <typename Type>
@@ -234,7 +235,7 @@ namespace evt {
 				open(std::ios::out | std::ios::in | std::ios::trunc);
 
 				unsigned char smarker[] = { 0xEF, 0xBB, 0xBF };
-				//fileStream << smarker;
+				fileStream << smarker;
 			}
 
 			fileStream << contentToWrite;

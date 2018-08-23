@@ -1,5 +1,5 @@
 package bestan.common.protobuf;
-class MessageEnum {
 
+class MessageEnum {
 	BaseProto = 1,
 }
