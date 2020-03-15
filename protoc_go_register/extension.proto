@@ -1,0 +1,9 @@
+syntax ="proto3";
+import "google/protobuf/descriptor.proto";
+option optimize_for = SPEED;
+
+//此文件的option定义范围为70001-75535
+//protoc必须先生成，才能取到proto中message的option定义
+extend google.protobuf.MessageOptions {
+    int32 msgType = 70001;
+}
